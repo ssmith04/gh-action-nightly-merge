@@ -13,6 +13,7 @@ echo "    - allow_forks = $INPUT_ALLOW_FORKS"
 echo "    - user_name = $INPUT_USER_NAME"
 echo "    - user_email = $INPUT_USER_EMAIL"
 echo "    - push_token = $INPUT_PUSH_TOKEN = ${!INPUT_PUSH_TOKEN}"
+echo "    - github workspace = $GITHUB_WORKSPACE"
 echo
 
 if [[ $INPUT_ALLOW_FORKS != "true" ]]; then
@@ -38,7 +39,8 @@ if [[ "$INPUT_ALLOW_FF" == "true" ]]; then
   fi
 fi
 
-git config --global --add safe.directory "$GITHUB_WORKSPACE"
+#git config --global --add safe.directory "$GITHUB_WORKSPACE"
+git config --global --add safe.directory /github/workspace
 
 git remote set-url origin https://x-access-token:${!INPUT_PUSH_TOKEN}@github.com/$GITHUB_REPOSITORY.git
 git config --global user.name "$INPUT_USER_NAME"
