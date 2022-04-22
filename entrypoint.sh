@@ -40,6 +40,7 @@ if [[ "$INPUT_ALLOW_FF" == "true" ]]; then
 fi
 
 #git config --global --add safe.directory "$GITHUB_WORKSPACE"
+echo "attemping to add exception for $GITHUB_WORKSPACE"
 git config --global --add safe.directory /github/workspace
 
 git remote set-url origin https://x-access-token:${!INPUT_PUSH_TOKEN}@github.com/$GITHUB_REPOSITORY.git
